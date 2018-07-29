@@ -10,7 +10,7 @@ public class JwtUserDetails implements UserDetails{
 
     private String userName;
     private String token;
-    private long id;
+    private Long id;
     private Collection<? extends GrantedAuthority> authorities;
 
     public JwtUserDetails(String userName, long id, String token, List<GrantedAuthority> grantedAuthorities) {
@@ -22,6 +22,11 @@ public class JwtUserDetails implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    @Override
+    public String getPassword() {
         return null;
     }
 
@@ -55,27 +60,14 @@ public class JwtUserDetails implements UserDetails{
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getToken() {
         return token;
     }
 
-    public void setToken(String token) {
-        this.token = token;
-    }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
-    public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
-        this.authorities = authorities;
-    }
 }

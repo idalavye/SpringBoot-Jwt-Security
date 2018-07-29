@@ -4,6 +4,7 @@ import com.idalavye.security.security.JwtAuthenticationEntryPoint;
 import com.idalavye.security.security.JwtAuthenticationProvider;
 import com.idalavye.security.security.JwtAuthenticationTokenFilter;
 import com.idalavye.security.security.JwtSuccessHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,7 +23,10 @@ import java.util.Collections;
 @EnableWebSecurity
 @Configuration
 public class JwtSecurtiyConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Autowired
     private JwtAuthenticationProvider authenticationProvider;
+    @Autowired
     private JwtAuthenticationEntryPoint entryPoint;
 
     @Bean
@@ -34,7 +38,7 @@ public class JwtSecurtiyConfiguration extends WebSecurityConfigurerAdapter {
     public JwtAuthenticationTokenFilter authenticationTokenFilter(){
         JwtAuthenticationTokenFilter filter = new JwtAuthenticationTokenFilter();
         filter.setAuthenticationManager(authenticationManager());
-        filter.setAuthenticationSuccessHander(new JwtSuccessHandler());
+        filter.setAuthenticationSuccessHandler(new JwtSuccessHandler());
 
         return filter;
     }
