@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SecurityApplication {
 
 	public static void main(String[] args) {
+
+		//deneme
 		SpringApplication.run(SecurityApplication.class, args);
 	}
 }
